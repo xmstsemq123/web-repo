@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>註冊會員</title>
+    <link href='http://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+    <style>
+        @import url("reg_log.css");
+    </style>
+    <script>
+        const send_url = "http://miyagawakayo.com/ajax_test/index.php";
+        function send_request(email){
+            fetch(send_url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: JSON.stringify({email})
+            })
+        }
+    </script>
+</head>
+<body>
+    <div class="register-box">
+        <div class="title">KAYO</div>
+        <div class="subtitle">註冊 / 登入</div>
+        <div class="input-box">
+            <div class="input">
+                <input type="text" name="email" required/>
+                <label for="email">Email</label>
+            </div>
+        </div>
+        <div class="btn-box">
+            <div class="btn">
+                <button type="submit" >
+                    註冊 / 登入
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
