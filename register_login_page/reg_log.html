@@ -11,7 +11,7 @@
     <script>
         const send_url = "http://miyagawakayo.com/ajax_test/index.php";
         function send_request(email){
-            fetch(send_url, {
+            return fetch(send_url, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
@@ -27,17 +27,26 @@
         <div class="subtitle">註冊 / 登入</div>
         <div class="input-box">
             <div class="input">
-                <input type="text" name="email" required/>
+                <input type="text" name="email" id="email" required/>
                 <label for="email">Email</label>
             </div>
         </div>
         <div class="btn-box">
             <div class="btn">
-                <button type="submit" >
+                <button type="submit" id="submit_button">
                     註冊 / 登入
                 </button>
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        const btn = document.getElementById("submit_button");
+        btn.addEventListener("click", function(event){
+            send_request(document.getElementById("email").value)
+            .then((response_unprocessed)=>response_unprocessed.text())
+            .then((response)=>{console.log(response)})
+            .catch((error)=>{console.log(error)});
+        });
+    </script>
 </body>
 </html>
